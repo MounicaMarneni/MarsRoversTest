@@ -1,10 +1,10 @@
-package org.pageObjectModel;
+package org.project.pageObjectModel;
 
 public class Rover {
-    //    public static final Integer N = 1;
-//    public static final Integer E = 2;
-//    public static final Integer S = 3;
-//    public static final Integer W = 4;
+    public static final Integer N = 1;
+    public static final Integer E = 2;
+    public static final Integer S = 3;
+    public static final Integer W = 4;
     Integer x, y, facing;
 
     public Rover() {
@@ -13,24 +13,13 @@ public class Rover {
     public void initialiseRover() {
         x = 0;
         y = 0;
-        facing = 0;
+        facing = N;
     }
 
-    public void setPosition(Integer x, Integer y, String direction) {
+    public void setPosition(Integer x, Integer y, Integer facing) {
         this.x = x;
         this.y = y;
-        if (direction.equals("N")) {
-            this.facing = 1;
-        }
-        if (direction.equals("E")) {
-            this.facing = 2;
-        }
-        if (direction.equals("S")) {
-            this.facing = 3;
-        }
-        if (direction.equals("W")) {
-            this.facing = 4;
-        }
+        this.facing = facing;
     }
 
     public void printPosition() {
@@ -67,23 +56,23 @@ public class Rover {
     }
 
     private void move() {
-        if (facing == 1) {
+        if (facing == N) {
             this.y++;
-        } else if (facing == 2) {
+        } else if (facing == E) {
             this.x++;
-        } else if (facing == 3) {
+        } else if (facing == S) {
             this.y--;
-        } else if (facing == 4) {
+        } else if (facing == W) {
             this.x--;
         }
     }
 
     private void turnLeft() {
-        facing = (facing - 1) < 1 ? 4 : facing - 1;
+        facing = (facing - 1) < N ? W : facing - 1;
     }
 
     private void turnRight() {
-        facing = (facing + 1) > 4 ? 1 : facing + 1;
+        facing = (facing + 1) > W ? N : facing + 1;
     }
 
 }
